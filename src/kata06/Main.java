@@ -6,7 +6,7 @@ import toys.*;
 public class Main {
 
     public static void main(String[] args) {
-        SerialNumberGenerator generator = new SerialNumberGenerator();
+        ToyBusiness toyBusiness = new ToyBusiness(); 
         ArrayList<Car> cars = new ArrayList<>(); 
         ArrayList<Helicopter> helicopters = new ArrayList<>();
 
@@ -17,20 +17,14 @@ public class Main {
             line = in.nextLine();
             switch(line){
                 case "car":
-                    Car car = new Car(generator.next());
-                    car.pack();
-                    car.label();
-                    cars.add(car);
+                    cars.add(toyBusiness.createCar());
                     System.out.println("Built cars: " + cars
                             .stream()
                             .map(c -> c.getSerialNumber().toString())
                             .collect(Collectors.joining(",")));
                     break;
                 case "helicopter":
-                    Helicopter helicopter = new Helicopter(generator.next());
-                    helicopter.pack();
-                    helicopter.label();
-                    helicopters.add(helicopter);
+                    helicopters.add(toyBusiness.createHecopter());
                     System.out.println("Built helicopter: " + helicopters
                             .stream()
                             .map(c -> c.getSerialNumber().toString())
