@@ -1,15 +1,17 @@
 package kata06;
+import toyproducts.models.HelicopterToy;
+import toyproducts.models.CarToy;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.stream.Collectors;
+import toyproducts.Toy;
 import toys.*;
 public class Main {
 
     public static void main(String[] args) {
         ToyBusiness toyBusiness = new ToyBusiness(); 
-        ArrayList<Car> cars = new ArrayList<>(); 
-        ArrayList<Helicopter> helicopters = new ArrayList<>();
-
+        ArrayList<Toy> toys = new ArrayList<>(); 
+        
         Scanner in = new Scanner(System.in);
         String line = "";
         //line.equals("exit") -> posible nullpointexception
@@ -17,17 +19,11 @@ public class Main {
             line = in.nextLine();
             switch(line){
                 case "car":
-                    cars.add(toyBusiness.createCar());
-                    System.out.println("Built cars: " + cars
-                            .stream()
-                            .map(c -> c.getSerialNumber().toString())
-                            .collect(Collectors.joining(",")));
-                    break;
                 case "helicopter":
-                    helicopters.add(toyBusiness.createHecopter());
-                    System.out.println("Built helicopter: " + helicopters
+                    toys.add(toyBusiness.createToy(line));
+                    System.out.println("Built toys: " + toys
                             .stream()
-                            .map(c -> c.getSerialNumber().toString())
+                            .map(Object::toString)
                             .collect(Collectors.joining(",")));
                     break;
                 case "exit":
