@@ -1,15 +1,19 @@
 package kata06;
 import business.ToyBusiness;
+import factories.regionalFactories.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.stream.Collectors;
-import branches.*;
 import toyproducts.*;
 public class Main {
 
     public static void main(String[] args) {
-        ToyBusiness toyBusiness = new AmericanToyBusiness(); 
+        AmericanToyFactory americanToyFactory = new AmericanToyFactory();
+        AsianToyFactory asianToyFactory = new AsianToyFactory();
+        
         ArrayList<Toy> toys = new ArrayList<>(); 
+        
+        ToyBusiness toyBusiness = new ToyBusiness(americanToyFactory);
         
         Scanner in = new Scanner(System.in);
         String line = "";
@@ -19,7 +23,7 @@ public class Main {
             switch(line){
                 case "car":
                 case "helicopter":
-                    toys.add(toyBusiness.createToy(line));
+                    toys.add(toyBusiness.produceToy(line));
                     System.out.println("Built toys: " + toys
                             .stream()
                             .map(Object::toString)
