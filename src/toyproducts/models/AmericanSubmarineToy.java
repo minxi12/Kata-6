@@ -38,4 +38,9 @@ public class AmericanSubmarineToy implements Toy {
         return "AmericanSubmarineToy{" + "SerialNumber=" + SerialNumber + '}';
     }
 
+    @Override
+    public void prepare() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }
