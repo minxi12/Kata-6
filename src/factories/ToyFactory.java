@@ -3,13 +3,12 @@ package factories;
 import toyproducts.Toy;
 
 public abstract class ToyFactory {
-    final protected SerialNumberGenerator generator = new SerialNumberGenerator();
-    
-    public Toy produceToy(String type){
-        Toy toy = this.createToy(type);
+
+    public Toy produceToy(Integer SerialNumber){
+        Toy toy = this.createToy(SerialNumber);
         toy.label();
         toy.pack();
         return toy;
     }
-    protected abstract Toy createToy(String type);
+    protected abstract Toy createToy(Integer SerialNumber);
 }

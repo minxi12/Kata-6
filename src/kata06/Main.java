@@ -8,13 +8,13 @@ import toyproducts.*;
 public class Main {
 
     public static void main(String[] args) {
-        AmericanToyFactory americanToyFactory = new AmericanToyFactory();
-        AsianToyFactory asianToyFactory = new AsianToyFactory();
+        ArrayList<Toy> toys = new ArrayList<>();     
+        ToyBusiness toyBusiness = new ToyBusiness();
         
-        ArrayList<Toy> toys = new ArrayList<>(); 
-        
-        ToyBusiness toyBusiness = new ToyBusiness(americanToyFactory);
-        
+        toyBusiness.add("car", new AsianCarToyFactory());
+        toyBusiness.add("helicopter", new AsianHelicopterToyFactory());
+        toyBusiness.add("submarine", new AmericanSubmarineToyFactory());
+
         Scanner in = new Scanner(System.in);
         String line = "";
         //line.equals("exit") -> posible nullpointexception
@@ -22,6 +22,7 @@ public class Main {
             line = in.nextLine();
             switch(line){
                 case "car":
+                case "submarine":
                 case "helicopter":
                     toys.add(toyBusiness.produceToy(line));
                     System.out.println("Built toys: " + toys

@@ -8,7 +8,7 @@ public class AmericanCarToy implements Toy{
 
     public AmericanCarToy(Integer SerialNumber) {
         this.SerialNumber = SerialNumber;
-        this.type = "American Car";
+        this.type = "Car";
     }
 
     public String getType() {
